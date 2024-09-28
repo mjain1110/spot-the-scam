@@ -8,7 +8,6 @@ import Link from "next/link";
 import { ThemeProvider } from "@/components/theme-provider";
 import { ModeToggle } from "@/components/ui/mode-toggle";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import HeroSection from "@/components/HeroSection";
 
 const satoshi = localFont({
   src: "/fonts/Satoshi.ttf",
