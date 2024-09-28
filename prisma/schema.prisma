@@ -7,20 +7,18 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model Analysis {
+  id               Int          @id @default(autoincrement())
+  lastAnalyzedAt   DateTime     @default(now())
+  type             AnalysisType
+  analysisId       String       @unique
+  url              String
+  feedbackGiven    Boolean      @default(false)
+  inputParameters  Json
+  outputParameters Json
+}
+
 enum AnalysisType {
   website
   app
-}
-
-model Analysis {
-  id                  Int         @id @default(autoincrement())
-  lastAnalyzedAt      DateTime    @default(now())
-  type                AnalysisType
-  analysisId          String      @unique
-  url                 String
-  feedbackGiven       Boolean     @default(false)
-  
-  // Store the entire input and output as JSON
-  inputParameters     Json
-  outputParameters    Json
 }
