@@ -1,0 +1,26 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum AnalysisType {
+  website
+  app
+}
+
+model Analysis {
+  id                  Int         @id @default(autoincrement())
+  lastAnalyzedAt      DateTime    @default(now())
+  type                AnalysisType
+  analysisId          String      @unique
+  url                 String
+  feedbackGiven       Boolean     @default(false)
+  
+  // Store the entire input and output as JSON
+  inputParameters     Json
+  outputParameters    Json
+}
