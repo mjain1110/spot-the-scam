@@ -11,7 +11,7 @@ type analysisResultJSON = {
 };
 
 export async function analyzeUrl(url: string, type: "website" | "app") {
-  const rawResult = await fetch("http://98.80.188.193:5000/analyze", {
+  const rawResult = await fetch("http://127.0.0.1:5000/analyze", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.AUTH_TOKEN}`,
