@@ -37,7 +37,7 @@ export default function ScoreCard({
         <div className={`text-${size === "small" ? "xl" : "2xl"} font-bold`}>
           {heading}
         </div>
-        <div className={`text-${size === "small" ? "sm" : "lg"} text-gray-500 ${size === "big" ? "text-center" : ""}`}>
+        <div className={`text-${size === "small" ? "sm" : "md"} text-gray-500 ${size === "big" ? "text-center" : ""}`}>
           {reason}
         </div>
       </div>

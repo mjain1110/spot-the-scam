@@ -6,6 +6,7 @@ generator client {
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
 
 model Analysis {
@@ -17,6 +18,17 @@ model Analysis {
   feedbackGiven    Boolean      @default(false)
   inputParameters  Json
   outputParameters Json
+}
+
+model Feedback {
+  id              Int           @id @default(autoincrement())
+  analysisId      String        @unique
+  inputParameters Json
+  outputParameters Json
+  feedbackGiven   Boolean
+  usedForTraining Boolean       @default(false)
+  type            AnalysisType
+  createdAt       DateTime      @default(now())
 }
 
 enum AnalysisType {

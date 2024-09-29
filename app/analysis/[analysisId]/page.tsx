@@ -1,6 +1,6 @@
 import { fetchAnalysis } from "@/app/actions/serverActions";
 import AnalyzedResult from "@/components/AnalyzedResult";
-import { analysisResult } from "@/lib/interfaces";
+import { AnalysisResult } from "@/lib/interfaces";
 
 export default async function AnalysisPage({
   params,
@@ -13,7 +13,7 @@ export default async function AnalysisPage({
   }
   return (
     <AnalyzedResult
-      result={result as unknown as analysisResult}
+      result={result as unknown as AnalysisResult}
       analysisId={params.analysisId}
     />
   );
