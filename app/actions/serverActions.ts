@@ -11,6 +11,13 @@ type analysisResultJSON = {
 };
 
 export async function analyzeUrl(url: string, type: "website" | "app") {
+  const alreadyAnalyzed = await prisma.analysis.findMany({
+    where: { url, type },
+  });
+  if (alreadyAnalyzed.length > 0) {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
+    return alreadyAnalyzed[alreadyAnalyzed.length - 1];
+  }
   const rawResult = await fetch("http://127.0.0.1:5000/analyze", {
     method: "POST",
     headers: {

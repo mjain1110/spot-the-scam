@@ -45,6 +45,7 @@ export default function InputForm() {
       analysisRecord = await analyzeUrl(appId, "app");
     }
     setIsLoading(false);
+    console.log(analysisRecord);
     if (analysisRecord) {
       router.push(`/analysis/${analysisRecord.analysisId}`);
     }

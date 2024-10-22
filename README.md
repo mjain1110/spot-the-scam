@@ -96,3 +96,8 @@ Ensure both servers are running concurrently for full functionality.
 - API authentication is implemented using bearer tokens.
 
 For more detailed information, refer to the individual README files in each repository.
+
+Find env variables for you here: (Don't put anywhere else apart from your env file and don't share with anyone else)
+DIRECT_URL="postgresql://postgres:h31OG7OX04A5IWML@db.jiifdfjunnilpifwahtv.supabase.co:5432/postgres"
+DATABASE_URL="prisma://accelerate.prisma-data.net/?api_key=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiMzgzOTRiYTUtOTM4Zi00OGFkLThlYjAtZGM5NDdhNTFmN2UzIiwidGVuYW50X2lkIjoiNmJkNmYyZWIyYjAwNmU4YjI4NjEwZDg1Zjc4NDhkNmNkNjE0MmJjZWNmNGEwYmY1OTIzNWU3MDljMDFhYzM3NCIsImludGVybmFsX3NlY3JldCI6IjMwNmIwYWQwLTc3ZmUtNDEyOC04NzFhLWRmOGE1ODZkMzQwOCJ9.1cw7UjbxK7RkvYfhEBqumFk6fd35BdpQyDlVCQOqN3k"
+AUTH_TOKEN="a3f1c1b0f4a99b8e4f95c2c56f4f63d0"
