@@ -50,7 +50,23 @@ interface AppAnalysisResult extends BaseAnalysisResult {
   };
 }
 
-export type AnalysisResult = WebsiteAnalysisResult | AppAnalysisResult;
+export interface ApkAnalysisResult extends BaseAnalysisResult {
+  type: "apk";
+  inputParameters: {
+    apkFile?: string;
+  };
+  outputParameters: {
+    overallScore: ScoreResult;
+    permissionsScore: ScoreResult;
+    certificateScore: ScoreResult;
+    appNameScore: ScoreResult;
+    versionNameScore: ScoreResult;
+    minSdkVersionScore: ScoreResult;
+    targetSdkVersionScore: ScoreResult;
+  };
+}
+
+export type AnalysisResult = WebsiteAnalysisResult | AppAnalysisResult | ApkAnalysisResult;
 interface ScoreResult {
   score: number;
   heading: string;

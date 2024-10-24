@@ -15,10 +15,10 @@ export async function analyzeUrl(url: string, type: "website" | "app") {
     where: { url, type },
   });
   if (alreadyAnalyzed.length > 0) {
-    await new Promise((resolve) => setTimeout(resolve, 5000));
+    // await new Promise((resolve) => setTimeout(resolve, 5000));
     return alreadyAnalyzed[alreadyAnalyzed.length - 1];
   }
-  const rawResult = await fetch("http://127.0.0.1:5000/analyze", {
+  const rawResult = await fetch("http://127.0.0.1:5001/analyze", {
     method: "POST",
     headers: {
       "Authorization": `Bearer ${process.env.AUTH_TOKEN}`,
@@ -83,4 +83,17 @@ export async function recordFeedback(analysisId: string, feedback: boolean) {
   });
   revalidatePath("/analysis/" + analysisId);
   return result;
+}
+
+export async function submitAnalysisToDB(result: AnalysisResult) {
+  const newAnalysis = await prisma.analysis.create({
+    data: {
+      type: result.type,
+      analysisId: result.analysisId,
+      url: result.url,
+      inputParameters: result.inputParameters,
+      outputParameters: result.outputParameters as unknown as InputJsonValue,
+    },
+  });
+  return newAnalysis;
 }

@@ -24,12 +24,16 @@ export default function AnalyzedResult({
           src={
             result.type === "website"
               ? result.inputParameters.websiteScreenshot
-              : result.inputParameters.appDetails.icon
+              : result.type === "app"
+              ? result.inputParameters.appDetails.icon
+              : "/images/apk-file.png"
           }
           alt="screenshot"
           width={result.type === "website" ? 455 : 96}
           height={result.type === "website" ? 256 : 96}
-          className={`rounded-xl ${result.type === "website" ? "shadow-md" : ""}`}
+          className={`rounded-xl ${
+            result.type === "website" ? "shadow-md" : ""
+          }`}
         />
         <ScoreCard
           heading={result.outputParameters.overallScore.heading}
@@ -108,6 +112,46 @@ export default function AnalyzedResult({
             heading={result.outputParameters.privacyPolicyScore.heading}
             score={result.outputParameters.privacyPolicyScore.score}
             reason={result.outputParameters.privacyPolicyScore.reason}
+            size="small"
+          />
+        </div>
+      )}
+      {result.type === "apk" && (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <ScoreCard
+            heading={result.outputParameters.appNameScore.heading}
+            score={result.outputParameters.appNameScore.score}
+            reason={result.outputParameters.appNameScore.reason}
+            size="small"
+          />
+          <ScoreCard
+            heading={result.outputParameters.permissionsScore.heading}
+            score={result.outputParameters.permissionsScore.score}
+            reason={result.outputParameters.permissionsScore.reason}
+            size="small"
+          />
+          <ScoreCard
+            heading={result.outputParameters.certificateScore.heading}
+            score={result.outputParameters.certificateScore.score}
+            reason={result.outputParameters.certificateScore.reason}
+            size="small"
+          />
+          <ScoreCard
+            heading={result.outputParameters.versionNameScore.heading}
+            score={result.outputParameters.versionNameScore.score}
+            reason={result.outputParameters.versionNameScore.reason}
+            size="small"
+          />
+          <ScoreCard
+            heading={result.outputParameters.minSdkVersionScore.heading}
+            score={result.outputParameters.minSdkVersionScore.score}
+            reason={result.outputParameters.minSdkVersionScore.reason}
+            size="small"
+          />
+          <ScoreCard
+            heading={result.outputParameters.targetSdkVersionScore.heading}
+            score={result.outputParameters.targetSdkVersionScore.score}
+            reason={result.outputParameters.targetSdkVersionScore.reason}
             size="small"
           />
         </div>
